@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+
+
+
+{% block header %}
+{% include "components/header.html" %}
+{% endblock header %}
+
+{% block main %}
+
+{% if factory %}
+
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-center">
+                            <div class="row">
+                                <div class="col-12 d-flex align-items-center justify-content-center mb-2">
+                                      <img src="/static/assets/images/brands/dropbox.png" alt="">
+                                 </div>
+
+                                 <div class="col-12 d-flex align-items-center justify-content-center">
+                                    <h2 class="mb-0 font-size-30"> قائمة المصانع</h2>
+                                </div>
+                            </div>
+                              
+                           
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row ">
+                    {% for x in factory  %}
+                    <div class="col-xl-4 col-sm-6 d-flex justify-content-center ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media d-flex justify-content-center">
+
+                                    <div class="row  ">
+                                        <div class="col-lg-12 d-flex justify-content-center">
+                                            <div class=" avatar-md">
+                                                <span class="avatar-title rounded-circle  text-danger font-size-16">
+                                                    
+                                                    {% if x.image %}
+                                                        <img src="{{x.image.url}}" alt="" height="30">
+                                                        {% else %}
+                                                        <img src="/static/assets/images/favicon.ico" alt="" height="30">
+                                                    {% endif %}
+                                                        
+                                                    
+                                                </span>
+                                            </div>
+        
+                                        </div>
+
+                                        <div class="col-lg-12 d-flex justify-content-center ">
+                                            <div class="media-body ">
+                                                <div class="d-flex justify-content-center mt-4">
+                                                    <h5 class="text-truncate font-size-15">{{x.name}}</h5>
+                                                    
+                                                </div>
+                                               
+                                                <div class="team d-flex justify-content-center">
+                                                    <div>
+                                                        {% if x.machine_type %}
+                                                        <p class="text-muted "> نوع المكينة : <span class="badge badge-warning">{{x.machine_type}}</span>
+                                                        </p>
+                                                    {% else %}
+                                                        <p class="text-muted "> نوع المكينة : لم تضاف بعد</span>
+                                                        </p>
+                                                    {% endif %}
+  
+                                                    </div>
+                                                    
+                                                    <div>
+                                                        {% if x.machine_count %}
+                                                    <p class="text-muted "> عدد المكينات : <span class="badge badge-primary">{{x.machine_count}}</span>
+                                                    </p>
+                                                    {% else %}
+                                                    <p class="text-muted "> عدد المكينات  : لم تضاف بعد</span>
+                                                    </p>
+                                                    {% endif %}
+                                                    
+                                                    </div>
+                                                    
+                                                    
+                                                        
+        
+                                                </div>
+
+                                            
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    
+                                   
+                                   
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 border-top d-flex justify-content-center">
+                                <ul class="list-inline mb-0">
+                                    <li class="list-inline-item mr-3">
+                                        
+                                        {% if x.active == True %}
+                                         <span class="badge badge-success">يعمل</span>
+                                        {% else %}
+                                         <span class="badge badge-danger">متوقف</span>
+                                        {% endif %}
+                                            
+                                       
+                                    </li>
+                                    <li class="list-inline-item mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Due Date">
+                                        <i class="bx bx-calendar mr-1"></i> {{x.created}}
+                                    </li>
+                                    <li class="list-inline-item mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Comments">
+                                        
+                                        {% if x.hour_price %}
+                                        <i class='bx bxs-dollar-circle'></i> {{x.hour_price}}
+                                            
+                                        {% endif %}
+                                            
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                   
+                </div>
+                <!-- end row -->
+
+                <!-- pagination -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="pagination pagination-rounded justify-content-center mt-2 mb-5">
+                            <li class="page-item disabled">
+                                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">1</a>
+                            </li>
+                            <li class="page-item active">
+                                <a href="#" class="page-link">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">4</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">5</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end row -->
+                
+            </div> <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script>2021 © Skote.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-right d-none d-sm-block">
+                            Design &amp; Develop by Themesbrand
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    {% else %}
+
+    <div class="main-content">
+
+        <div class="page-content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="text-center mb-5 mt-5">
+                            <h1 class="display-2 font-weight-medium">4<i class="bx bx-buoy bx-spin text-primary display-3"></i>4</h1>
+                            <h4 class="text-uppercase">للأسف لا توجد بيانات</h4>
+                            <div class="mt-3 text-center">
+                                <a class="btn btn-primary waves-effect waves-light" href="index.html">اضافة بيانات</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-12 d-flex justify-content-center ">
+                        
+                        <img src="/static/assets/images/error-img.png" width="400px" height="188px" alt="" class="img-fluid" >
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+{% endif %}
+    
+{% endblock main %}
+
+{% block left-sidebar %}
+  {% include "components/leftSidebar.html" %}
+{% endblock left-sidebar %}
