@@ -1,69 +1,94 @@
 {% extends "base.html" %}
 
-
-
-
 {% block header %}
 {% include "components/header.html" %}
+
 {% endblock header %}
 
 {% block main %}
 
-{% if factory %}
+{% if object_list %}
 
-    <div class="main-content">
+    
+    <div class="main-content " >
+        
+        <div class="page-content ">
 
-        <div class="page-content">
-            <div class="container-fluid">
+            <div class="container-fluid  ">
 
                 <!-- start page title -->
-                <div class="row mb-4">
+                <div class="row mb-1 " >
+                    
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-center">
                             <div class="row">
-                                <div class="col-12 d-flex align-items-center justify-content-center mb-2">
-                                      <img src="/static/assets/images/brands/dropbox.png" alt="">
-                                 </div>
+                               
 
                                  <div class="col-12 d-flex align-items-center justify-content-center">
-                                    <h2 class="mb-0 font-size-30"> قائمة المصانع</h2>
+                                    <h1 class="mb-0 font-size-30 font-weight-bold"> قائمة المصانع</h1>
+                                </div>
+
+                                <!-- Tools nav -->
+                                <div class="col-12 d-flex align-items-center justify-content-center  mt-3 ">
+                                    <nav class="navbar navbar-expand-lg navbar-dark shadow-lg p-3 mb-1 bg-white  rounded" >
+                                        <div class="container-fluid">
+                                         
+                                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-icon"></span>
+                                          </button>
+                                          <div class="collapse navbar-collapse" id="navbarNav">
+                                            <ul class="navbar-nav">
+                                              <li class="nav-item">
+                                                <a class="nav-link active btn btn-success" aria-current="page" href="#" data-toggle="modal"
+                                                data-target="#sub_modal" ><i class="bx bxs-add-to-queue"></i> جديد </a>
+                                              </li>
+                                              <li class="nav-item ml-2">
+                                                <a class="nav-link active btn btn-danger" href="#"><i class="bx bx-trash"></i> المهملات </a>
+                                              </li>
+                                              <li class="nav-item ml-2">
+                                                <a class="nav-link active btn btn-info" href="#"> <i class='bx bx-filter-alt' ></i> الفلتر</a>
+                                              </li>
+                                              
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </nav>
                                 </div>
                             </div>
-                              
                            
-                            
                         </div>
                     </div>
+
+                    
                 </div>
                 <!-- end page title -->
 
+                <!-- factory cards -->
                 <div class="row ">
-                    {% for x in factory  %}
+                   
+                    {% for x in object_list  %}
+                    
                     <div class="col-xl-4 col-sm-6 d-flex justify-content-center ">
-                        <div class="card">
+                        <div class="card shadow-lg">
                             <div class="card-body">
                                 <div class="media d-flex justify-content-center">
 
-                                    <div class="row  ">
-                                        <div class="col-lg-12 d-flex justify-content-center">
-                                            <div class=" avatar-md">
-                                                <span class="avatar-title rounded-circle  text-danger font-size-16">
-                                                    
-                                                    {% if x.image %}
-                                                        <img src="{{x.image.url}}" alt="" height="30">
-                                                        {% else %}
-                                                        <img src="/static/assets/images/favicon.ico" alt="" height="30">
-                                                    {% endif %}
-                                                        
-                                                    
-                                                </span>
+                                    <div class="row d-flex justify-content-center  ">
+                                        <div class="col-lg-12 d-flex justify-content-center  mb-3">
+                                            <div class="avatar-md d-flex justify-content-center">
+
+                                                <span>
+                                                    <img src="/static/assets/images/vector/factory1.png" alt="" width="100px"> 
+
+                                                </span>                                                    
+                                                
                                             </div>
         
                                         </div>
 
-                                        <div class="col-lg-12 d-flex justify-content-center ">
+                                        <div class="col-lg-12 d-flex justify-content-center  mt-3">
                                             <div class="media-body ">
-                                                <div class="d-flex justify-content-center mt-4">
+                                                <div class="d-flex justify-content-center ">
                                                     <h5 class="text-truncate font-size-15">{{x.name}}</h5>
                                                     
                                                 </div>
@@ -90,12 +115,13 @@
                                                     {% endif %}
                                                     
                                                     </div>
-                                                    
-                                                    
-                                                        
-        
-                                                </div>
 
+                                                </div>
+                                                <div class="d-flex justify-content-center" >
+                                                    <i class="bx bx-trash bx-sm " style="color:#f46a6a
+                                                    ;"></i>
+                                                </div>
+                                                
                                             
                                             </div>
                                         </div>
@@ -106,9 +132,10 @@
                                    
                                 </div>
                             </div>
+
                             <div class="px-4 py-3 border-top d-flex justify-content-center">
                                 <ul class="list-inline mb-0">
-                                    <li class="list-inline-item mr-3">
+                                    <li class="list-inline-item mr-1">
                                         
                                         {% if x.active == True %}
                                          <span class="badge badge-success">يعمل</span>
@@ -118,10 +145,10 @@
                                             
                                        
                                     </li>
-                                    <li class="list-inline-item mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Due Date">
-                                        <i class="bx bx-calendar mr-1"></i> {{x.created}}
+                                    <li class="list-inline-item m" data-toggle="tooltip" data-placement="top" title="" data-original-title="Due Date">
+                                        <i class="bx bx-calendar "></i> {{x.created}}
                                     </li>
-                                    <li class="list-inline-item mr-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Comments">
+                                    <li class="list-inline-item " data-toggle="tooltip" data-placement="top" title="" data-original-title="Comments">
                                         
                                         {% if x.hour_price %}
                                         <i class='bx bxs-dollar-circle'></i> {{x.hour_price}}
@@ -136,61 +163,27 @@
                     {% endfor %}
                    
                 </div>
-                <!-- end row -->
+                <!-- end factory cards -->
 
                 <!-- pagination -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="pagination pagination-rounded justify-content-center mt-2 mb-5">
-                            <li class="page-item disabled">
-                                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">1</a>
-                            </li>
-                            <li class="page-item active">
-                                <a href="#" class="page-link">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">4</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">5</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- end row -->
+                
+                {% if is_paginated %}
+                  {% include "components/paginator.html" %}
+                {% endif %}
+                    
+              
                 
             </div> <!-- container-fluid -->
         </div>
         <!-- End Page-content -->
 
-        
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script>2021 © Skote.
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="text-sm-right d-none d-sm-block">
-                            Design &amp; Develop by Themesbrand
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        {% include "components/footer.html" %}
+   
     </div>
 
     {% else %}
 
+    <!-- not found page   -->
     <div class="main-content">
 
         <div class="page-content">
@@ -229,3 +222,4 @@
 {% block left-sidebar %}
   {% include "components/leftSidebar.html" %}
 {% endblock left-sidebar %}
+

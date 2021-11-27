@@ -1,14 +1,11 @@
 from django.shortcuts import render
-
-import Factories
+from django.views.generic import *
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from .models import *
 
 # Create your views here
-def list(request):
-    factory = Factory.objects.all()
-    print(factory)
-    
-    context = {
-        'factory' : factory
-    }
-    return render(request,'factory/list.html' , context)
+
+class FactoryList(LoginRequiredMixin , ListView):
+    login_url = '/auth/login/'
+    model = Factory
+    paginate_by = 6
