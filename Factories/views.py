@@ -9,3 +9,8 @@ class FactoryList(LoginRequiredMixin , ListView):
     login_url = '/auth/login/'
     model = Factory
     paginate_by = 6
+
+class FactoryDetail(LoginRequiredMixin , DetailView):
+    login_url = '/auth/login/'
+    model = Factory
+    
