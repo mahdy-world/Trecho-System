@@ -11,8 +11,21 @@ class Factory(models.Model):
     machine_count = models.IntegerField(null=True , verbose_name="عدد المكن")
     phone = models.CharField(null=True, blank=True, max_length=12 , verbose_name="رقم الموبيل")
     active = models.BooleanField(default=True , verbose_name="يعمل")
+    start_date = models.DateField(null=True , verbose_name="تاريخ البداية")
     
     
     def __str__(self):
         return self.name
     
+class Payment(models.Model):
+    created = models.DateTimeField(auto_now_add=True , verbose_name="تاريخ الاضافة")
+    price = models.IntegerField(verbose_name="المبلغ")
+    factory = models.ForeignKey(Factory , on_delete=models.CASCADE , verbose_name="المصنع")
+    recipient = models.CharField(max_length=50 , verbose_name="المستلم")
+    admin = models.CharField(max_length=50 , verbose_name="المسئول")
+    date = models.DateField(verbose_name="التاريخ")
+    
+    def __str__(self):
+        return self.factory.name
+    
+       

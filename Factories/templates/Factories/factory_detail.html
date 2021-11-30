@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+
+{% block header %}
+{% include "components/header.html" %}
+
+{% endblock header %}
+
+{% block main %}
+
+
+
+    
+    <div class="main-content " >
+        
+        <div class="page-content ">
+
+            <div class="container-fluid  ">
+
+                <!-- start page title -->
+                
+                <!-- end page title -->
+
+
+
+                <!-- معلومات  -->
+                <div class="row">
+                    <div class="col-xl-4">
+
+                        <!-- info cards  -->
+                        <div class="card overflow-hidden">
+                            <div class="bg-soft-primary">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <div class="text-primary p-3 mt-3">
+
+                                            <img  src="/static/assets/images/vector/factory1.png" width="100px" alt="">
+                                            <h3 class="text-primary">{{object.name}}</h3>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-5 align-self-end">
+                                        <img src="/static/assets/images/profile-img.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body pt-0">
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-nowrap mb-0">
+                                        <tbody>
+                                            
+                                            {% if object.phone %}
+                                            <tr>
+                                                <th scope="row"> رقم الهاتف : </th>
+                                                <td>{{object.phone}}</td>
+                                            </tr>
+                                            {% endif %}
+                                            
+                                            {% if object.machine_type %}
+                                            <tr>
+                                                <th scope="row"> نوع المكينة : </th>
+                                                <td>{{object.machine_type}}</td>
+                                            </tr>
+                                            {% endif %}
+
+                                            {% if object.machine_count %}
+                                            <tr>
+                                                <th scope="row"> عدد المكينات : </th>
+                                                <td>{{object.machine_count}}</td>
+                                            </tr>
+                                            {% endif %}
+                                            
+
+                                            {% if object.active %}
+                                            <tr>
+                                                <th scope="row">  حالة العمل : </th>
+                                                
+                                                <td>
+                                                    
+                                                    {% if object.active == True %}
+                                                       <span class="badge badge-success">يعمل</span> 
+                                                    {% else %}
+                                                        <span class="badge badge-warninig">متوقف</span>                 
+                                                    {% endif %}
+                                                        
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+
+
+                                            {% if object.start_date %}
+                                            <tr>
+                                                <th scope="row"> تاريخ البداية : </th>
+                                                <td>{{object.start_date}}</td>
+                                                
+                                            </tr>
+                                            {% endif %}
+
+                                            <tr style="align-items: center;">
+                                                
+                                                <td><button class="btn btn-info"> <i class='bx bx-edit' undefined ></i> تعديل البيانات </button></td>
+                                                
+                                                {% if object.active == True %}
+                                                     <td><button class="btn btn-warning"> <i class='bx bx-power-off' ></i>  ايقاف </button></td>
+                                                {% else %}
+                                                    <td><button class="btn btn-success"> <i class='bx bx-power-off' ></i>  تشغيل </button></td>      
+                                                {% endif %}
+                                                    
+                                                
+                                                <td><button class="btn btn-danger"> <i class='bx bx-trash' ></i>  حذف </button></td>
+                                            </tr>
+                                            
+                                            
+                                            
+                                           
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                      
+                    </div>
+                    <div class="col-xl-8">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <p class="text-muted font-weight-medium">اجمالي الوزن قبل الهاللك</p>
+                                                <h4 class="mb-0">1,235</h4>
+                                            </div>
+
+                                            <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                                                <span class="avatar-title">
+                                                    <i class="bx bxs-cylinder  bx-tada font-size-24"></i>
+                                                    <i class='bx bxs-cylinder  bx-tada'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <p class="text-muted font-weight-medium">اجمالي الوزن بعد خصم الهالك</p>
+                                                <h4 class="mb-0">$35, 723</h4>
+                                            </div>
+
+                                            <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                                                <span class="avatar-title rounded-circle bg-primary">
+                                                    <i class="bx bxs-cylinder  bx-tada font-size-24"></i>
+                                                    
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <p class="text-muted font-weight-medium">  اجمالي الوزن المستلم </p>
+                                                <h4 class="mb-0">$16.2</h4>
+                                            </div>
+
+                                            <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                                                <span class="avatar-title rounded-circle bg-primary">
+                                                    
+                                                    <i class='bx bx-right-down-arrow-circle bx-tada font-size-24'  ></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <h2><i class='bx bx-dollar-circle' ></i>الدفعات <a href="ecommerce-checkout.html" class="btn btn-success">
+                                            <i class="mdi mdi-cart-arrow-right mr-1"></i> اضافة  </a></h2> 
+                                        <table class="table table-centered mb-0 table-nowrap">
+                                            <thead class="thead-light">
+                                                <tr align="center">
+                                                    <th>#</th>
+                                                    <th> التاريخ</th>
+                                                    <th>المبلغ</th>
+                                                    <th >المستلم</th>
+                                                    <th>الامين</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align="center">
+                                                <tr>
+                                                    <td>
+                                                        <i class='bx bx-dollar bx-tada bx-lg' style='color:#ddbb3f' ></i>
+                                                    </td>
+                                                    <td>
+                                                       <h4>22-11-2021</h4>
+                                                    </td>   
+                                                    <td>
+                                                        $ 450
+                                                    </td>
+
+                                                    <td>
+                                                        <h3 align="center"><i class='bx bx-user-pin bx-sm'></i>  </h3>
+                                                        <p align="center">احمد المهدي </p>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        
+                                                            <h3 align="center"><i class='bx bx-user-pin bx-sm'></i></h3>
+                                                            <p align="center">احمد المهدي </p>
+                                                       
+                                                    </td>
+
+                                                    <td>
+                                                        <a><i class='bx bx-edit bx-tada bx-sm' style='color:#0f68c1' ></i></a>    
+                                                        <a><i class='bx bx-trash bx-tada bx-sm' style='color:#d51010' ></i></a>
+
+                                                    </td>   
+                                                  
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <i class='bx bx-dollar bx-tada bx-lg' style='color:#ddbb3f' ></i>
+                                                    </td>
+                                                    <td>
+                                                       <h4>22-11-2021</h4>
+                                                    </td>   
+                                                    <td>
+                                                        $ 450
+                                                    </td>
+
+                                                    <td>
+                                                        <h3 align="center"><i class='bx bx-user-pin bx-sm'></i>  </h3>
+                                                        <p align="center">احمد المهدي </p>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        
+                                                            <h3 align="center"><i class='bx bx-user-pin bx-sm'></i></h3>
+                                                            <p align="center">احمد المهدي </p>
+                                                       
+                                                    </td>
+
+                                                    <td>
+                                                        <a><i class='bx bx-edit bx-tada bx-sm' style='color:#0f68c1' ></i></a>    
+                                                        <a><i class='bx bx-trash bx-tada bx-sm' style='color:#d51010' ></i></a>
+
+                                                    </td>   
+                                                  
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <i class='bx bx-dollar bx-tada bx-lg' style='color:#ddbb3f' ></i>
+                                                    </td>
+                                                    <td>
+                                                       <h4>22-11-2021</h4>
+                                                    </td>   
+                                                    <td>
+                                                        $ 450
+                                                    </td>
+
+                                                    <td>
+                                                        <h3 align="center"><i class='bx bx-user-pin bx-sm'></i>  </h3>
+                                                        <p align="center">احمد المهدي </p>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        
+                                                            <h3 align="center"><i class='bx bx-user-pin bx-sm'></i></h3>
+                                                            <p align="center">احمد المهدي </p>
+                                                       
+                                                    </td>
+
+                                                    <td>
+                                                        <a><i class='bx bx-edit bx-tada bx-sm' style='color:#0f68c1' ></i></a>    
+                                                        <a><i class='bx bx-trash bx-tada bx-sm' style='color:#d51010' ></i></a>
+
+                                                    </td>   
+                                                  
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <i class='bx bx-dollar bx-tada bx-lg' style='color:#ddbb3f' ></i>
+                                                    </td>
+                                                    <td>
+                                                       <h4>22-11-2021</h4>
+                                                    </td>   
+                                                    <td>
+                                                        $ 450
+                                                    </td>
+
+                                                    <td>
+                                                        <h3 align="center"><i class='bx bx-user-pin bx-sm'></i>  </h3>
+                                                        <p align="center">احمد المهدي </p>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        
+                                                            <h3 align="center"><i class='bx bx-user-pin bx-sm'></i></h3>
+                                                            <p align="center">احمد المهدي </p>
+                                                       
+                                                    </td>
+
+                                                    <td>
+                                                        <a><i class='bx bx-edit bx-tada bx-sm' style='color:#0f68c1' ></i></a>    
+                                                        <a><i class='bx bx-trash bx-tada bx-sm' style='color:#d51010' ></i></a>
+
+                                                    </td>   
+                                                  
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <i class='bx bx-dollar bx-tada bx-lg' style='color:#ddbb3f' ></i>
+                                                    </td>
+                                                    <td>
+                                                       <h4>22-11-2021</h4>
+                                                    </td>   
+                                                    <td>
+                                                        $ 450
+                                                    </td>
+
+                                                    <td>
+                                                        <h3 align="center"><i class='bx bx-user-pin bx-sm'></i>  </h3>
+                                                        <p align="center">احمد المهدي </p>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        
+                                                            <h3 align="center"><i class='bx bx-user-pin bx-sm'></i></h3>
+                                                            <p align="center">احمد المهدي </p>
+                                                       
+                                                    </td>
+
+                                                    <td>
+                                                        <a><i class='bx bx-edit bx-tada bx-sm' style='color:#0f68c1' ></i></a>    
+                                                        <a><i class='bx bx-trash bx-tada bx-sm' style='color:#d51010' ></i></a>
+
+                                                    </td>   
+                                                  
+
+                                                </tr>
+
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-6">
+                                            <a href="#" class="btn btn-danger">
+                                                 اجمالي المبلغ : ج 2000   </a>
+                                        </div> <!-- end col -->
+                                        <div class="col-sm-6">
+                                            <div class="text-sm-right mt-2 mt-sm-0">
+                                                
+                                            </div>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row-->
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+
+                
+                <!-- pagination -->
+                
+                {% if is_paginated %}
+                  {% include "components/paginator.html" %}
+                {% endif %}
+                    
+              
+                
+            </div> <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        {% include "components/footer.html" %}
+   
+    </div>
+
+  
+
+    
+{% endblock main %}
+
+{% block left-sidebar %}
+  {% include "components/leftSidebar.html" %}
+{% endblock left-sidebar %}
+
